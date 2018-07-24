@@ -1,4 +1,4 @@
-package br.edu.ifpe.usuarios.util;
+package br.edu.ifpe.usuarios.conexao;
 
 import br.edu.ifpe.usuarios.util.exception.ErroSistema;
 import java.sql.Connection;
@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 public class Conexoes {
     private static Connection conexao;
-    private static final String URL_CONEXAO = "jdbc:mysql://localhost/sistema-usuario"; 
+    private static final String URL_CONEXAO = "jdbc:mysql://localhost/sysparceria"; 
     private static final String USUARIO = "root"; 
-    private static final String SENHA = "root"; 
+    private static final String SENHA = "Linkinpark"; 
 
     public static Connection getConexao() throws ErroSistema {
         if(conexao == null){
