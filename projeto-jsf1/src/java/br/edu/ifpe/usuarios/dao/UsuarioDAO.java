@@ -1,6 +1,6 @@
 package br.edu.ifpe.usuarios.dao;
 
-import br.edu.ifpe.usuarios.entidade.Usuario;
+import br.edu.ifpe.usuarios.entidades.Usuario;
 import br.edu.ifpe.usuarios.conexao.Conexoes;
 import br.edu.ifpe.usuarios.util.exception.ErroSistema;
 import java.sql.Connection;

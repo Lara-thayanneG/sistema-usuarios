@@ -1,4 +1,4 @@
-package br.edu.ifpe.usuarios.entidade;
+package br.edu.ifpe.usuarios.entidades;
 
 import java.util.Objects;
 

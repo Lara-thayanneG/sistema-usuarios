@@ -2,7 +2,7 @@
 package br.edu.ifpe.usuarios.bean;
 
 import br.edu.ifpe.usuarios.dao.UsuarioDAO;
-import br.edu.ifpe.usuarios.entidade.Usuario;
+import br.edu.ifpe.usuarios.entidades.Usuario;
 import br.edu.ifpe.usuarios.util.exception.ErroSistema;
 import java.util.ArrayList;
 import java.util.List;
