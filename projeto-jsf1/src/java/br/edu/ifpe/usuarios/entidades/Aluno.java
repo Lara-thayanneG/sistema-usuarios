@@ -1,5 +1,7 @@
 package br.edu.ifpe.usuarios.entidades;
 
+import java.sql.Date;
+
 /**
  *
  * @author Edjânio
