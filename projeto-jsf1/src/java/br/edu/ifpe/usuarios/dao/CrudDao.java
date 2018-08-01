@@ -8,7 +8,7 @@ public interface CrudDao<E> {
     
     public void salvar(E entidade)throws ErroSistema;
     public void deletar(E entidade)throws ErroSistema;
-    public List<E>listar();
+    public List<E>listar()throws ErroSistema;
     
     
     

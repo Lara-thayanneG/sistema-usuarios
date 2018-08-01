@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Conexoes {
     private static Connection conexao;
-    private static final String URL_CONEXAO = "jdbc//:mysql://localhost/sysparceria"; 
+    private static final String URL_CONEXAO = "jdbc:mysql://127.0.0.1:3306/sysparceria"; 
     private static final String USUARIO = "root"; 
     private static final String SENHA = "Linkinpark"; 
 
@@ -42,3 +42,5 @@ public class Conexoes {
     }
     
 }
+
+

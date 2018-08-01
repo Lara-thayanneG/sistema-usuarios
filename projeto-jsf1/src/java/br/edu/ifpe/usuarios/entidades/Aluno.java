@@ -1,7 +1,4 @@
 package br.edu.ifpe.usuarios.entidades;
-
-import java.sql.Date;
-
 /**
  *
  * @author Edjânio
@@ -71,5 +68,28 @@ public class Aluno {
         this.curso = curso;
     }
     
-    
+   @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + this.matricula;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aluno other = (Aluno) obj;
+        if (this.matricula != other.matricula) {
+            return false;
+        }
+        return true;
+    } 
 }
