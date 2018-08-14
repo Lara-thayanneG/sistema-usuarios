@@ -1,0 +1,12 @@
+br\edu\ifpe\usuarios\dao\EmpresaDao.class
+br\edu\ifpe\usuarios\dao\CrudDao.class
+br\edu\ifpe\usuarios\entidades\Usuario.class
+br\edu\ifpe\usuarios\entidades\Aluno.class
+br\edu\ifpe\usuarios\entidades\Empresa.class
+br\edu\ifpe\usuarios\util\exception\ErroSistema.class
+br\edu\ifpe\usuarios\entidades\Escola.class
+br\edu\ifpe\usuarios\dao\UsuarioDAO.class
+br\edu\ifpe\usuarios\dao\AlunoDao.class
+br\edu\ifpe\usuarios\dao\EscolaDao.class
+br\edu\ifpe\usuarios\bean\UsuarioBean.class
+br\edu\ifpe\usuarios\conexao\Conexoes.class
