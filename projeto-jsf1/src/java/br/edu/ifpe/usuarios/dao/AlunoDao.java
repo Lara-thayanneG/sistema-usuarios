@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class AlunoDao implements CrudDao<Aluno>{
 
     @Override   
-    public void salvar(Aluno aluno) throws ErroSistema {
+    public void salvar(Aluno aluno){
     try{
         Connection conexao = Conexoes.getConexao();
         PreparedStatement ps;
@@ -34,17 +34,17 @@ public class AlunoDao implements CrudDao<Aluno>{
     }catch (SQLException ex) {
             Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    @Override
+    public void deletar(Aluno aluno){
+    //Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
+//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Aluno aluno) throws ErroSistema {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Aluno> listar() throws ErroSistema {
+    public List<Aluno> listar(){
          Connection conexao = Conexoes.getConexao();
         try {
             PreparedStatement ps = conexao.prepareStatement("Select * from alunos");

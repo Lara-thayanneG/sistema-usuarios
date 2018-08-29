@@ -16,6 +16,8 @@ public class AlunoBean {
     
     public void adicionar() throws ErroSistema{
         new AlunoDao().salvar(aluno);
+        aluno = new Aluno(null,"","","","","");
+        
     }
 
     public Aluno getAluno() {
