@@ -4,6 +4,8 @@ package br.edu.ifpe.usuarios.bean;
 import br.edu.ifpe.usuarios.entidades.Aluno;
 import br.edu.ifpe.usuarios.dao.AlunoDao;
 import br.edu.ifpe.usuarios.util.exception.ErroSistema;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -13,11 +15,16 @@ import javax.faces.bean.SessionScoped;
 public class AlunoBean {
     
     private Aluno aluno = new Aluno(null,"","","","","");
-    
-    public void adicionar() throws ErroSistema{
+    AlunoDao alunoDao = new AlunoDao();
+    private List<Aluno> alunos = new ArrayList<>();
+
+    public void adicionar(){
         new AlunoDao().salvar(aluno);
         aluno = new Aluno(null,"","","","","");
-        
+    }
+    
+    public void listar(){
+        alunos = alunoDao.listar();
     }
 
     public Aluno getAluno() {
@@ -28,6 +35,13 @@ public class AlunoBean {
         this.aluno = aluno;
     }
     
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
     
     
 }

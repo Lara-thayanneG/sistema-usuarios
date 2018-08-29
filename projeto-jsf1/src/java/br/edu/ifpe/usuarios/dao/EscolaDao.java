@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class EscolaDao implements CrudDao<Escola>{
 
     @Override
-    public void salvar(Escola escola) throws ErroSistema {
+    public void salvar(Escola escola){
         try{
         Connection conexao = Conexoes.getConexao();
         PreparedStatement ps;
@@ -38,12 +38,12 @@ public class EscolaDao implements CrudDao<Escola>{
     }
 
     @Override
-    public void deletar(Escola entidade) throws ErroSistema {
+    public void deletar(Escola entidade){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Escola> listar() throws ErroSistema {
+    public List<Escola> listar(){
         Connection conexao = Conexoes.getConexao();
         try {
             PreparedStatement ps = conexao.prepareStatement("select * from escola");

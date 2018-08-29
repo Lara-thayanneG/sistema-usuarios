@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 public class EmpresaDao implements CrudDao<Empresa>{
 
     @Override
-    public void salvar(Empresa empresa) throws ErroSistema {
+    public void salvar(Empresa empresa){
         try {
             Connection conexao = Conexoes.getConexao();
              PreparedStatement ps;
@@ -42,12 +42,12 @@ public class EmpresaDao implements CrudDao<Empresa>{
     }
 
     @Override
-    public void deletar(Empresa empresa) throws ErroSistema {
+    public void deletar(Empresa empresa){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Empresa> listar() throws ErroSistema {
+    public List<Empresa> listar(){
         Connection conexao = Conexoes.getConexao();
         try {
             PreparedStatement ps = conexao.prepareStatement("select * from empresas");

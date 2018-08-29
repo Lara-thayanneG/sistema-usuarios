@@ -1,4 +1,7 @@
 package br.edu.ifpe.usuarios.entidades;
+
+import java.util.Objects;
+
 /**
  *
  * @author Edjânio
@@ -67,11 +70,11 @@ public class Aluno {
     public void setCurso(String curso) {
         this.curso = curso;
     }
-    
-   @Override
+
+    @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + this.matricula;
+        hash = 59 * hash + Objects.hashCode(this.matricula);
         return hash;
     }
 
@@ -87,9 +90,11 @@ public class Aluno {
             return false;
         }
         final Aluno other = (Aluno) obj;
-        if (this.matricula != other.matricula) {
+        if (!Objects.equals(this.matricula, other.matricula)) {
             return false;
         }
         return true;
-    } 
+    }
+   
+    
 }

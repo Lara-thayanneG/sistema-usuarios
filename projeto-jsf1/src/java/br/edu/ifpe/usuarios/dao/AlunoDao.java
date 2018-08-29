@@ -39,8 +39,18 @@ public class AlunoDao implements CrudDao<Aluno>{
 
     @Override
     public void deletar(Aluno aluno){
-    //Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            Connection conexao = Conexoes.getConexao();
+            PreparedStatement ps;
+            ps = conexao.prepareStatement("delete from alunos where matricula=?");
+            ps.setInt(1, aluno.getMatricula());
+            ps.execute();
+            Conexoes.fecharConexao();
+            //Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        } catch (SQLException ex) {
+            Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -51,13 +61,13 @@ public class AlunoDao implements CrudDao<Aluno>{
             ResultSet resultSet = ps.executeQuery();
             List<Aluno> alunos = new ArrayList<>();
             while(resultSet.next()){
-                Aluno aluno = new Aluno(0,"","","","","");
-                aluno.setMatricula(resultSet.getInt("matricula"));
-                aluno.setCpf(resultSet.getString("cpf"));
-                aluno.setNome(resultSet.getString("nome"));
-                aluno.setData_nascimento(resultSet.getString("data_nascimento"));
-                aluno.setEndereco(resultSet.getString("endereco"));
-                aluno.setCurso(resultSet.getString("curso"));
+                Aluno aluno = new Aluno(null,"","","","","");
+                aluno.setMatricula(resultSet.getInt("matricula_aluno"));
+                aluno.setCpf(resultSet.getString("cpf_aluno"));
+                aluno.setNome(resultSet.getString("nome_aluno"));
+                aluno.setData_nascimento(resultSet.getString("data_nascimento_aluno"));
+                aluno.setEndereco(resultSet.getString("endereco_aluno"));
+                aluno.setCurso(resultSet.getString("curso_aluno"));
                 alunos.add(aluno);
             }
             return alunos;
@@ -68,7 +78,8 @@ public class AlunoDao implements CrudDao<Aluno>{
     }
     public static void main (String [] args) throws ErroSistema{
         AlunoDao objeto = new AlunoDao();
-        Aluno alunoobjeto = new Aluno(null, "0000000044", "Julião", "09/10/1992", "Rua Esquecida", "Redes de Computadores");
-        objeto.salvar(alunoobjeto);
+        //Aluno alunoobjeto = new Aluno(null, "0000000044", "Julião", "09/10/1992", "Rua Esquecida", "Redes de Computadores");
+        //objeto.salvar(alunoobjeto);
+        objeto.listar();
     }
 }

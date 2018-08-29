@@ -28,16 +28,50 @@
 
             <h:outputLabel value="Curso" ></h:outputLabel>
             <p:inputText value="#{alunoBean.aluno.curso}"></p:inputText>
-        </p:panelGrid>   
-
+        </p:panelGrid>  
+        
         <p:toolbar>
             <p:toolbarGroup>
                 <p:commandButton value="Adicionar" action="#{alunoBean.adicionar()}" update="@form:"></p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>
-
+        
+        <p:dataTable  value="#{alunoBean.alunos}" var="listalunos">
+            <p:column headerText="Matriula">
+                <h:outputText value="#{listalunos.matricula}"/>
+            </p:column>
+            
+            <p:column headerText="Nome">
+                <h:outputText value="#{listalunos.nome}"/>
+            </p:column>
+            
+            <p:column headerText="CPF">
+                <h:outputText value="#{listalunos.cpf}"/>
+            </p:column>
+            
+            <p:column headerText="Data de Nascimento">
+                <h:outputText value="#{listalunos.data_nascimento}"/>
+            </p:column>
+            
+            <p:column headerText="Endereço">
+                <h:outputText value="#{listalunos.endereco}"/>
+            </p:column>
+            
+            <p:column headerText="Curso">
+                <h:outputText value="#{listalunos.curso}"/>
+            </p:column>
+           
+        </p:dataTable>
+        
+                <p:toolbar>
+            <p:toolbarGroup>
+                <p:commandButton value="Listar" action="#{alunoBean.listar()}" update="@form:"></p:commandButton>
+            </p:toolbarGroup>
+        </p:toolbar>
 
     </h:form>
+    
+    
 
 </ui:decorate>
 
