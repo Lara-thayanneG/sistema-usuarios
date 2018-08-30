@@ -60,6 +60,12 @@
             <p:column headerText="Curso">
                 <h:outputText value="#{listalunos.curso}"/>
             </p:column>
+            
+            <p:column>
+                <p:commandButton value="Remover" action="#{alunoBean.remover(listalunos)}" update="@form:">
+                    <f:setPropertyActionListener value="#{listalunos}" target="#{alunoBean.aluno}"></f:setPropertyActionListener>
+                </p:commandButton>
+            </p:column>
            
         </p:dataTable>
         

@@ -21,10 +21,15 @@ public class AlunoBean {
     public void adicionar(){
         new AlunoDao().salvar(aluno);
         aluno = new Aluno(null,"","","","","");
+        new AlunoBean().listar();
     }
     
     public void listar(){
         alunos = alunoDao.listar();
+    }
+    
+    public void remover(Aluno alunovar){
+        alunoDao.deletar(alunovar);
     }
 
     public Aluno getAluno() {

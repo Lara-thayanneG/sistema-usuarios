@@ -42,7 +42,7 @@ public class AlunoDao implements CrudDao<Aluno>{
         try {
             Connection conexao = Conexoes.getConexao();
             PreparedStatement ps;
-            ps = conexao.prepareStatement("delete from alunos where matricula=?");
+            ps = conexao.prepareStatement("delete from alunos where matricula_aluno=?");
             ps.setInt(1, aluno.getMatricula());
             ps.execute();
             Conexoes.fecharConexao();
@@ -78,8 +78,8 @@ public class AlunoDao implements CrudDao<Aluno>{
     }
     public static void main (String [] args) throws ErroSistema{
         AlunoDao objeto = new AlunoDao();
-        //Aluno alunoobjeto = new Aluno(null, "0000000044", "Julião", "09/10/1992", "Rua Esquecida", "Redes de Computadores");
+        Aluno alunoobjeto = new Aluno(1, "0000000033", "jarilândio", "09/10/1992", "Rua Esquecida", "Redes de Computadores");
         //objeto.salvar(alunoobjeto);
-        objeto.listar();
+        objeto.deletar(alunoobjeto);
     }
 }
