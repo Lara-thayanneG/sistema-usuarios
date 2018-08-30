@@ -24,7 +24,7 @@ public class EmpresaDao implements CrudDao<Empresa>{
         try {
             Connection conexao = Conexoes.getConexao();
              PreparedStatement ps;
-            if(empresa.getCodigo() == 0){
+            if(empresa.getCodigo() == null){
                ps = conexao.prepareStatement("insert into empresas_parceiras (cnpj_empresa, nome_empresa, endereco_empresa) values (?, ?, ?)");
             } else {
                 ps = conexao.prepareStatement("update empresa set cnpj_empresa=?, nome_empresa=?, endereco_empresa=? where codigo_empresa=?");
