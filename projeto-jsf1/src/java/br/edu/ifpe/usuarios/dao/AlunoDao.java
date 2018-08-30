@@ -77,9 +77,9 @@ public class AlunoDao implements CrudDao<Aluno>{
         }
     }
     public static void main (String [] args) throws ErroSistema{
-        AlunoDao objeto = new AlunoDao();
-        Aluno alunoobjeto = new Aluno(1, "0000000033", "jarilândio", "09/10/1992", "Rua Esquecida", "Redes de Computadores");
+        //AlunoDao objeto = new AlunoDao();
+        //Aluno alunoobjeto = new Aluno(1, "0000000033", "jarilândio", "09/10/1992", "Rua Esquecida", "Redes de Computadores");
         //objeto.salvar(alunoobjeto);
-        objeto.deletar(alunoobjeto);
+        //objeto.deletar(alunoobjeto);
     }
 }

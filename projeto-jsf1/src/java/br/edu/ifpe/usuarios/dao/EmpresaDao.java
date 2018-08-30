@@ -25,9 +25,9 @@ public class EmpresaDao implements CrudDao<Empresa>{
             Connection conexao = Conexoes.getConexao();
              PreparedStatement ps;
             if(empresa.getCodigo() == 0){
-               ps = conexao.prepareStatement("insert into empresa (cnpj, nome, endereco) values (?, ?, ?)");
+               ps = conexao.prepareStatement("insert into empresas_parceiras (cnpj_empresa, nome_empresa, endereco_empresa) values (?, ?, ?)");
             } else {
-                ps = conexao.prepareStatement("update empresa set cnpj=?, nome=?, endereco=? where codigo=?");
+                ps = conexao.prepareStatement("update empresa set cnpj_empresa=?, nome_empresa=?, endereco_empresa=? where codigo_empresa=?");
                 ps.setInt(4, empresa.getCodigo());
             }
             ps.setString(1, empresa.getCnpj());
@@ -50,15 +50,15 @@ public class EmpresaDao implements CrudDao<Empresa>{
     public List<Empresa> listar(){
         Connection conexao = Conexoes.getConexao();
         try {
-            PreparedStatement ps = conexao.prepareStatement("select * from empresas");
+            PreparedStatement ps = conexao.prepareStatement("select * from empresas_parceiras");
             ResultSet resultSet = ps.executeQuery();
             List<Empresa> empresas = new ArrayList<>();
             while(resultSet.next()){
                 Empresa empresa = new Empresa(0,"","","");
-                empresa.setCodigo(resultSet.getInt("codigo"));
-                empresa.setCnpj(resultSet.getString("cnpj"));
-                empresa.setNome(resultSet.getString("nome"));
-                empresa.setEndereco(resultSet.getString("endereco"));
+                empresa.setCodigo(resultSet.getInt("codigo_empresa"));
+                empresa.setCnpj(resultSet.getString("cnpj_empresa"));
+                empresa.setNome(resultSet.getString("nome_empresa"));
+                empresa.setEndereco(resultSet.getString("endereco_empresa"));
                 empresas.add(empresa);
             }
             return empresas;

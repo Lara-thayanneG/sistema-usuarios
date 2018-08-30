@@ -19,9 +19,9 @@ public class AlunoBean {
     private List<Aluno> alunos = new ArrayList<>();
 
     public void adicionar(){
-        new AlunoDao().salvar(aluno);
+        //new AlunoDao().salvar(aluno);
+        alunoDao.salvar(aluno);
         aluno = new Aluno(null,"","","","","");
-        new AlunoBean().listar();
     }
     
     public void listar(){
