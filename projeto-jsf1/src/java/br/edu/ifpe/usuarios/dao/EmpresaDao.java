@@ -54,7 +54,7 @@ public class EmpresaDao implements CrudDao<Empresa>{
             ResultSet resultSet = ps.executeQuery();
             List<Empresa> empresas = new ArrayList<>();
             while(resultSet.next()){
-                Empresa empresa = new Empresa(0,"","","");
+                Empresa empresa = new Empresa(null,"","","");
                 empresa.setCodigo(resultSet.getInt("codigo_empresa"));
                 empresa.setCnpj(resultSet.getString("cnpj_empresa"));
                 empresa.setNome(resultSet.getString("nome_empresa"));
@@ -64,9 +64,10 @@ public class EmpresaDao implements CrudDao<Empresa>{
             return empresas;
         } catch (SQLException ex) {
             Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     

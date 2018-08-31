@@ -18,13 +18,33 @@
                         <h:outputLabel value="Nome"></h:outputLabel>
                         <p:inputText value="#{empresaBean.empresa.nome}"></p:inputText>
                         
-                        <h:outputLabel value="Endereco"></h:outputLabel>
+                        <h:outputLabel value="Endereço"></h:outputLabel>
                         <p:inputText value="#{empresaBean.empresa.endereco}"></p:inputText> 
                     </p:panelGrid>
                 
         <p:toolbar>
             <p:toolbarGroup>
                 <p:commandButton value="adicionar" action="#{empresaBean.adicionar()}" update="@form:"></p:commandButton>
+            </p:toolbarGroup>
+        </p:toolbar>
+        
+        <p:dataTable value="#{empresaBean.empresas}" var="listempresas">
+            <p:column headerText="CNPJ">
+                <h:outputText value="#{listempresas.cnpj}"></h:outputText>
+            </p:column>
+            
+            <p:column headerText="Nome">
+                <h:outputText value="#{listempresas.nome}"></h:outputText>
+            </p:column>
+            
+            <p:column headerText="Endereço">
+                <h:outputText value="#{listempresas.endereco}"></h:outputText>
+            </p:column>
+        </p:dataTable>
+        
+        <p:toolbar>
+            <p:toolbarGroup>
+                <p:commandButton value="Atualizar" action="#{empresaBean.listar()}" update="@form:"></p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>
     </h:form>

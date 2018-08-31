@@ -17,12 +17,12 @@ public class EmpresaBean {
 
 
 public void adicionar(){
-    this.empresaDao.salvar(empresa);
-    this.empresa = new Empresa(null, "","","");
+    empresaDao.salvar(empresa);
+    empresa = new Empresa(null, "","","");
 }
 
 public void listar(){
-    empresaDao.listar();
+    empresas = empresaDao.listar();
 }
 
  public void remover(Empresa empresa){
