@@ -25,8 +25,8 @@ public void listar(){
     empresas = empresaDao.listar();
 }
 
- public void remover(Empresa empresa){
-     this.empresaDao.deletar(empresa);
+ public void remover(Empresa empresavar){
+     this.empresaDao.deletar(empresavar);
  }
 
     public EmpresaDao getEmpresaDao() {

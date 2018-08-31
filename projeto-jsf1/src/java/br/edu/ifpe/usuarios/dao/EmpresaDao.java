@@ -43,7 +43,16 @@ public class EmpresaDao implements CrudDao<Empresa>{
 
     @Override
     public void deletar(Empresa empresa){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conexao = Conexoes.getConexao();
+        try {
+            PreparedStatement ps;
+            ps = conexao.prepareStatement("delete from empresas_parceiras where codigo_empresa=?");
+            ps.setInt(1, empresa.getCodigo());
+            ps.execute();
+            Conexoes.fecharConexao();
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
