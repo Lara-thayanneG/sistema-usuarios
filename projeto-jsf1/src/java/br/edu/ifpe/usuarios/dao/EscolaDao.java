@@ -20,10 +20,10 @@ public class EscolaDao implements CrudDao<Escola>{
         try{
         Connection conexao = Conexoes.getConexao();
         PreparedStatement ps;
-        if(escola.getCodigo() == 0){
-            ps = conexao.prepareStatement("insert into escolas (nome_escola, endereco_escola) values (?, ?");
+        if(escola.getCodigo() == null){
+            ps = conexao.prepareStatement("insert into escolas (nome_escola, endereco_escola) values (?, ?)");
         }else {
-            ps = conexao.prepareStatement("update escolas set nome=?, endereco=? where codigo_escola=?");
+            ps = conexao.prepareStatement("update escolas set nome_escola=?, endereco_escola=? where codigo_escola=?");
             ps.setInt(3, escola.getCodigo());
         }
         ps.setString(1, escola.getNome());
@@ -33,16 +33,14 @@ public class EscolaDao implements CrudDao<Escola>{
          } catch (SQLException ex) {
             Logger.getLogger(EmpresaDao.class.getName()).log(Level.SEVERE, null, ex);
          }
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+            }
 
     @Override
     public void deletar(Escola escola){
-        Connection conexao = Conexoes.getConexao();
         try {
+            Connection conexao = Conexoes.getConexao();
             PreparedStatement ps;
-            ps = conexao.prepareStatement("delete from escolas where=codigo_escola=?");
+            ps = conexao.prepareStatement("delete from escolas where codigo_escola=?");
             ps.setInt(1, escola.getCodigo());
             ps.execute();
             Conexoes.fecharConexao();
@@ -57,11 +55,11 @@ public class EscolaDao implements CrudDao<Escola>{
     public List<Escola> listar(){
         Connection conexao = Conexoes.getConexao();
         try {
-            PreparedStatement ps = conexao.prepareStatement("select * from escola");
+            PreparedStatement ps = conexao.prepareStatement("select * from escolas");
             ResultSet resultSet = ps.executeQuery();
             List<Escola> escolas = new ArrayList<>();
             while(resultSet.next()){
-                Escola escola = new Escola(0,"","");
+                Escola escola = new Escola(null,"","");
                 escola.setCodigo(resultSet.getInt("codigo_escola"));
                 escola.setNome(resultSet.getString("nome_escola"));
                 escola.setEndereco(resultSet.getString("endereco_escola"));
@@ -73,6 +71,11 @@ public class EscolaDao implements CrudDao<Escola>{
         }
         return null;
        
+    }
+    public static void main(String []args){
+        //EscolaDao escolaDao = new EscolaDao();
+        //Escola escola = new Escola(null, "ETE"," Lajedo");
+        //escolaDao.salvar(escola);
     }
     
 }

@@ -1,10 +1,14 @@
-
 package br.edu.ifpe.usuarios.bean;
+
 import br.edu.ifpe.usuarios.dao.EscolaDao;
 import br.edu.ifpe.usuarios.entidades.Escola;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+@ManagedBean
+@SessionScoped
 public class EscolaBean {
 private EscolaDao escolaDao = new EscolaDao();
 private Escola escola = new Escola(null, "","");
@@ -21,7 +25,7 @@ public void listar(){
 }
 
 public void remover(Escola escolavar){
-    escolaDao.deletar(escolavar);
+    this.escolaDao.deletar(escolavar);
     
 }
 
