@@ -21,9 +21,9 @@ public class EscolaDao implements CrudDao<Escola>{
         Connection conexao = Conexoes.getConexao();
         PreparedStatement ps;
         if(escola.getCodigo() == 0){
-            ps = conexao.prepareStatement("insert into escola (nome, endereco) values (?, ?");
+            ps = conexao.prepareStatement("insert into escolas (nome_escola, endereco_escola) values (?, ?");
         }else {
-            ps = conexao.prepareStatement("update escola set nome=?, endereco=? where codigo=?");
+            ps = conexao.prepareStatement("update escolas set nome=?, endereco=? where codigo_escola=?");
             ps.setInt(3, escola.getCodigo());
         }
         ps.setString(1, escola.getNome());
@@ -38,8 +38,19 @@ public class EscolaDao implements CrudDao<Escola>{
     }
 
     @Override
-    public void deletar(Escola entidade){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletar(Escola escola){
+        Connection conexao = Conexoes.getConexao();
+        try {
+            PreparedStatement ps;
+            ps = conexao.prepareStatement("delete from escolas where=codigo_escola=?");
+            ps.setInt(1, escola.getCodigo());
+            ps.execute();
+            Conexoes.fecharConexao();
+        } catch (SQLException ex) {
+            Logger.getLogger(EscolaDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     @Override
@@ -51,17 +62,17 @@ public class EscolaDao implements CrudDao<Escola>{
             List<Escola> escolas = new ArrayList<>();
             while(resultSet.next()){
                 Escola escola = new Escola(0,"","");
-                escola.setCodigo(resultSet.getInt("codigo"));
-                escola.setNome(resultSet.getString("nome"));
-                escola.setEndereco(resultSet.getString("endereco"));
+                escola.setCodigo(resultSet.getInt("codigo_escola"));
+                escola.setNome(resultSet.getString("nome_escola"));
+                escola.setEndereco(resultSet.getString("endereco_escola"));
                 escolas.add(escola);
             }
             return escolas;
         } catch (SQLException ex) {
             Logger.getLogger(EscolaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
