@@ -8,7 +8,7 @@
       template="template.xhtml"
              > 
 
-    <h:form>             
+    <h:form id="form1">             
         <p:tabMenu activeIndex="#{param.i}">
             <p:menuitem value="Adicionar Escola" outcome="gerenciar-escolas.xhtml" icon="ui-icon-person">
             </p:menuitem>
@@ -24,10 +24,15 @@
         
         <p:toolbar>
             <p:toolbarGroup>
-                <p:commandButton value="Adicionar" action="#{escolaBean.adicionar()}" update="@form:"></p:commandButton>
+                <p:commandButton value="Adicionar" action="#{escolaBean.adicionar()}" update="@form:form1"></p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>
         
+    </h:form>
+    
+     <br/>
+    <br/>
+    <h:form>
         
         <p:dataTable  value="#{escolaBean.escolas}" var="listescolas">
             <p:column headerText="Código">
@@ -47,6 +52,7 @@
                     <f:setPropertyActionListener value="#{listescolas}" target="#{escolaBean.escola}"></f:setPropertyActionListener>
                 </p:commandButton>
             </p:column>
+            
         </p:dataTable>
         
                 <p:toolbar>
