@@ -1,59 +1,71 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:decorate xmlns="http://www.w3.org/1999/xhtml"
-             xmlns:h="http://xmlns.jcp.org/jsf/html"
-             xmlns:p="http://primefaces.org/ui"
-             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-             template="template.xhtml"
-             xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:form>
-        <p:tabMenu activeIndex="#{params.i}">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="template.xhtml"
+             > 
+
+    <h:form>             
+        <p:tabMenu activeIndex="#{param.i}">
             <p:menuitem value="Adicionar Empresa" outcome="gerenciar-empresas.xhtml" icon="ui-icon-person">
             </p:menuitem>
-            </p:tabMenu>
-            
-                    <p:panelGrid columns="2">
-                        <h:outputLabel value="CNPJ"></h:outputLabel>
-                        <p:inputText value="#{empresaBean.empresa.cnpj}"></p:inputText>
-                        
-                        <h:outputLabel value="Nome"></h:outputLabel>
-                        <p:inputText value="#{empresaBean.empresa.nome}"></p:inputText>
-                        
-                        <h:outputLabel value="Endereço"></h:outputLabel>
-                        <p:inputText value="#{empresaBean.empresa.endereco}"></p:inputText> 
-                    </p:panelGrid>
-                
+        </p:tabMenu>
+        
+        <p:panelGrid columns="2">
+            <h:outputLabel value="CNPJ" ></h:outputLabel>
+            <p:inputText value="#{empresaBean.empresa.cnpj}"></p:inputText>
+
+            <h:outputLabel value="Nome" ></h:outputLabel>
+            <p:inputText value="#{empresaBean.empresa.nome}"></p:inputText>
+
+            <h:outputLabel value="Endereço" ></h:outputLabel>
+            <p:inputText value="#{empresaBean.empresa.endereco}"></p:inputText>
+        </p:panelGrid>  
+        
         <p:toolbar>
             <p:toolbarGroup>
-                <p:commandButton value="adicionar" action="#{empresaBean.adicionar()}" update="@form:"></p:commandButton>
+                <p:commandButton value="Adicionar" action="#{empresaBean.adicionar()}" update="@form:"></p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>
+    </h:form>
         
-        <p:dataTable value="#{empresaBean.empresas}" var="listempresas">
+    <h:form id="formulario">
+        <p:dataTable  value="#{empresaBean.empresas}" var="listempresas">
+            <p:column headerText="Código">
+                <h:outputText value="#{listempresas.codigo}"/>
+            </p:column>
+            
             <p:column headerText="CNPJ">
-                <h:outputText value="#{listempresas.cnpj}"></h:outputText>
+                <h:outputText value="#{listempresas.cnpj}"/>
             </p:column>
             
             <p:column headerText="Nome">
-                <h:outputText value="#{listempresas.nome}"></h:outputText>
+                <h:outputText value="#{listempresas.nome}"/>
             </p:column>
             
             <p:column headerText="Endereço">
-                <h:outputText value="#{listempresas.endereco}"></h:outputText>
+                <h:outputText value="#{listempresas.endereco}"/>
             </p:column>
             
             <p:column>
-                <p:commandButton value="Remover" action="#{empresaBean.remover(listempresas)}">
+                <p:commandButton value="Remover" action="#{empresaBean.remover(listempresas)}" update="@form: formulario">
                     <f:setPropertyActionListener value="#{listempresas}" target="#{empresaBean.empresa}"></f:setPropertyActionListener>
                 </p:commandButton>
             </p:column>
         </p:dataTable>
         
-        <p:toolbar>
+                <p:toolbar>
             <p:toolbarGroup>
-                <p:commandButton value="Atualizar" action="#{empresaBean.listar()}" update="@form:"></p:commandButton>
+                <p:commandButton value="Atualizar" action="#{empresaBean.listar()}" update="@form:formulario"></p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>
-    </h:form>
-</ui:decorate>
+        
 
+    </h:form>
+    
+    
+
+</ui:decorate>

@@ -36,8 +36,9 @@
                 <p:commandButton value="Adicionar" action="#{alunoBean.adicionar()}" update="@form:"></p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>
+    </h:form>
         
-        
+    <h:form id="formulario">
         <p:dataTable  value="#{alunoBean.alunos}" var="listalunos">
             <p:column headerText="Matriula">
                 <h:outputText value="#{listalunos.matricula}"/>
@@ -64,7 +65,7 @@
             </p:column>
             
             <p:column>
-                <p:commandButton value="Remover" action="#{alunoBean.remover(listalunos)}" update="@form:">
+                <p:commandButton value="Remover" action="#{alunoBean.remover(listalunos)}" update="@form: formulario">
                     <f:setPropertyActionListener value="#{listalunos}" target="#{alunoBean.aluno}"></f:setPropertyActionListener>
                 </p:commandButton>
             </p:column>
@@ -72,7 +73,7 @@
         
                 <p:toolbar>
             <p:toolbarGroup>
-                <p:commandButton value="Atualizar" action="#{alunoBean.listar()}" update="@form:"></p:commandButton>
+                <p:commandButton value="Atualizar" action="#{alunoBean.listar()}" update="@form:formulario"></p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>
         

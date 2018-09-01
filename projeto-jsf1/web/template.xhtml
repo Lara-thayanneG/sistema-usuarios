@@ -11,13 +11,16 @@
         <h1>Sistema Usuários </h1>
         
         <h:form>
-            <p:menubar>
+                <p:menubar>
                 <p:menuitem value="Home" outcome="index.xhtml"></p:menuitem>
-                <p:menuitem value="Gerenciar Usuários" outcome="gerenciar-usuario.xhtml"></p:menuitem>
-                <p:menuitem value="Gerenciar Alunos" outcome="gerenciar-alunos.xhtml"></p:menuitem>
-                <p:menuitem value="Gerenciar Empresas" outcome="gerenciar-empresas"></p:menuitem>
-                <p:menuitem value="Gerenciar Escolas" outcome="gerenciar-escolas"></p:menuitem>
-            </p:menubar>
+                <p:submenu label="Gerenciamento" icon="ui-icon-extlink">
+                <p:menuitem value="Gerenciar Alunos" outcome="gerenciar-alunos.xhtml"/>
+                <p:menuitem value="Gerenciar Empresas" outcome="gerenciar-empresas.xhtml"/>
+                <p:menuitem value="Gerenciar Escolas" outcome="gerenciar-escolas.xhtml"/>
+                </p:submenu>  
+                <p:menuitem value="About" outcome="index.xhtml"></p:menuitem>
+                </p:menubar> 
+      
         </h:form>
         
         <hr></hr>

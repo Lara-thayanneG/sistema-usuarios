@@ -11,8 +11,8 @@ import java.util.List;
 @SessionScoped
 public class EmpresaBean {
     
-    private EmpresaDao empresaDao = new EmpresaDao();
     private Empresa empresa = new Empresa(null,"","","");
+    private EmpresaDao empresaDao = new EmpresaDao();
     private List<Empresa> empresas = new ArrayList<>();
 
 
